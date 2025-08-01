@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Get the Template</title>
+  <style>
+    :root {
+      --bg:#0f111a;
+      --card:#1f2236;
+      --text:#f0f0f8;
+      --accent:#00e676;
+      --radius:14px;
+      --shadow:0 20px 60px -10px rgba(0,230,118,.25);
+      font-family: system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
+    }
+    *{box-sizing:border-box;}
+    body {
+      margin:0;
+      background: linear-gradient(135deg,#0f111a 0%,#1f2236 70%);
+      color: var(--text);
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:1rem;
+    }
+    .card {
+      max-width:520px;
+      width:100%;
+      background: var(--card);
+      border-radius: var(--radius);
+      padding:2rem 2.5rem;
+      box-shadow: var(--shadow);
+      position:relative;
+      text-align:center;
+    }
+    h1{margin-top:0;font-size:2rem;}
+    p{line-height:1.5;margin:1rem 0;}
+    .btn {
+      display:inline-block;
+      background: var(--accent);
+      padding:0.85rem 1.5rem;
+      border:none;
+      border-radius:8px;
+      cursor:pointer;
+      font-weight:600;
+      font-size:1rem;
+      text-decoration:none;
+      color:#0f111a;
+      transition:filter .2s;
+    }
+    .btn:hover {filter:brightness(1.1);}
+    .small {font-size:.85rem; opacity:.8; margin-top:.5rem;}
+    .price {font-size:1.25rem; font-weight:600; margin-bottom:.5rem;}
+    .badge {
+      position:absolute;
+      top:12px;
+      right:12px;
+      background: rgba(255,255,255,.08);
+      padding:6px 12px;
+      border-radius:999px;
+      font-size:.65rem;
+      letter-spacing:1px;
+      text-transform:uppercase;
+    }
+    .hidden {display:none;}
+    .link-box {
+      margin-top:1rem;
+      word-break: break-all;
+    }
+    code {background: rgba(255,255,255,.08); padding:4px 6px; border-radius:4px; display:block;}
+  </style>
+</head>
+<body>
+  <div class="card" aria-label="Purchase access to template">
+    <div class="badge">One-time</div>
+
+    <!-- Before payment -->
+    <div id="before-pay">
+      <h1>Get the Financial Template</h1>
+      <p>Pay once and instantly get access to the editable Google Sheet template. It will open as “Make a copy” so you own your version.</p>
+      <div class="price">$15 USD</div>
+      <!-- Replace with your Stripe Payment Link and set its success URL to this page with ?paid=1 -->
+      <a id="pay-button" class="btn" href="https://buy.stripe.com/test_4gM6oGclV8Ja6HxeREbZe08">Pay &amp; Get Access</a>
+      <div class="small">Secure payment powered by Stripe. After payment you'll be redirected back with access.</div>
+    </div>
+
+    <!-- Inline access when ?paid=1 -->
+    <div id="after-pay" class="hidden">
+      <h1>You're all set!</h1>
+      <p>Thank you for the purchase. Click below to make your own copy of the template:</p>
+      <!-- Forced-copy link: prompts user to make their own copy -->
+      <a class="btn" id="copy-link" href="https://docs.google.com/spreadsheets/d/1vDnKBO99-P1hvX7u_JXiNySWgIyCnBIs22qH852R0Sc/copy" target="_blank" rel="noopener">Open &amp; Copy Template</a>
+      <div class="small">If the link doesn't open, try in a new tab or disable extensions that block redirects.</div>
+      <div class="link-box">
+        <p>Or copy this URL:</p>
+        <code>https://docs.google.com/spreadsheets/d/1vDnKBO99-P1hvX7u_JXiNySWgIyCnBIs22qH852R0Sc/copy</code>
+      </div>
+    </div>
+
+    <!-- Error / fallback -->
+    <div id="error" class="hidden">
+      <h1>Something’s off</h1>
+      <p>We couldn't detect a valid payment signal. If you already paid, refresh. Otherwise, complete the purchase below:</p>
+      <a class="btn" href="https://buy.stripe.com/cNibJ0adNaRie9Z24SbZe06">Pay $15</a>
+    </div>
+
+    <div id="message" style="margin-top:1rem;"></div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const paid = params.get('paid');
+    const before = document.getElementById('before-pay');
+    const after = document.getElementById('after-pay');
+    const error = document.getElementById('error');
+
+    if (paid === '1') {
+      before.classList.add('hidden');
+      after.classList.remove('hidden');
+    } else if (paid !== null) {
+      before.classList.add('hidden');
+      error.classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>
