@@ -2,129 +2,228 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Get the Template</title>
   <style>
     :root {
-      --bg:#0f111a;
-      --card:#1f2236;
-      --text:#f0f0f8;
-      --accent:#00e676;
-      --radius:14px;
-      --shadow:0 20px 60px -10px rgba(0,230,118,.25);
-      font-family: system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
+      --bg: #0f111a;
+      --card: #1f2236;
+      --text: #f0f0f8;
+      --accent: #00e676;
+      --radius: 14px;
+      --shadow: 0 20px 60px -10px rgba(0, 230, 118, 0.25);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     }
-    *{box-sizing:border-box;}
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      margin:0;
-      background: linear-gradient(135deg,#0f111a 0%,#1f2236 70%);
+      margin: 0;
+      background: linear-gradient(135deg, #0f111a 0%, #1f2236 70%);
       color: var(--text);
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:1rem;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
     }
+
     .card {
-      max-width:520px;
-      width:100%;
+      max-width: 560px;
+      width: 100%;
       background: var(--card);
       border-radius: var(--radius);
-      padding:2rem 2.5rem;
+      padding: 2rem 2.5rem;
       box-shadow: var(--shadow);
-      position:relative;
-      text-align:center;
+      position: relative;
+      text-align: center;
     }
-    h1{margin-top:0;font-size:2rem;}
-    p{line-height:1.5;margin:1rem 0;}
+
+    h1 {
+      margin-top: 0;
+      font-size: 2rem;
+    }
+
+    p {
+      line-height: 1.5;
+      margin: 1rem 0;
+    }
+
     .btn {
-      display:inline-block;
+      display: inline-block;
       background: var(--accent);
-      padding:0.85rem 1.5rem;
-      border:none;
-      border-radius:8px;
-      cursor:pointer;
-      font-weight:600;
-      font-size:1rem;
-      text-decoration:none;
-      color:#0f111a;
-      transition:filter .2s;
+      padding: 0.85rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      color: #0f111a;
+      transition: filter 0.2s;
+      margin: 4px 0;
     }
-    .btn:hover {filter:brightness(1.1);}
-    .small {font-size:.85rem; opacity:.8; margin-top:.5rem;}
-    .price {font-size:1.25rem; font-weight:600; margin-bottom:.5rem;}
+
+    .btn:hover {
+      filter: brightness(1.1);
+    }
+
+    .small {
+      font-size: 0.75rem;
+      opacity: 0.8;
+      margin-top: 0.5rem;
+    }
+
     .badge {
-      position:absolute;
-      top:12px;
-      right:12px;
-      background: rgba(255,255,255,.08);
-      padding:6px 12px;
-      border-radius:999px;
-      font-size:.65rem;
-      letter-spacing:1px;
-      text-transform:uppercase;
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 0.65rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
     }
-    .hidden {display:none;}
+
+    .hidden {
+      display: none;
+    }
+
     .link-box {
-      margin-top:1rem;
-      word-break: break-all;
+      margin-top: 1rem;
+      word-break: break-word;
+      text-align: left;
     }
-    code {background: rgba(255,255,255,.08); padding:4px 6px; border-radius:4px; display:block;}
+
+    code {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 4px 6px;
+      border-radius: 4px;
+      display: block;
+    }
+
+    .product-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .product {
+      flex: 1;
+      min-width: 150px;
+      background: rgba(255, 255, 255, 0.04);
+      padding: 12px;
+      border-radius: 8px;
+    }
+
+    .product h2 {
+      margin: 0;
+      font-size: 1.1rem;
+    }
+
+    hr {
+      margin: 2rem 0;
+      border: none;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
   </style>
 </head>
 <body>
   <div class="card" aria-label="Purchase access to template">
     <div class="badge">One-time</div>
 
-    <!-- Before payment -->
+    <!-- Before Payment Section -->
     <div id="before-pay">
-      <h1>Get the Financial Template</h1>
-      <p>Pay once and instantly get access to the editable Google Sheet template. It will open as “Make a copy” so you own your version.</p>
-      <div class="price">$15 USD</div>
-      <!-- Replace with your Stripe Payment Link and set its success URL to this page with ?paid=1 -->
-      <a id="pay-button" class="btn" href="https://buy.stripe.com/9B6aEWbhRe3ue9ZeREbZe07">Pay &amp; Get Access</a>
-      <div class="small">Secure payment powered by Stripe. After payment you'll be redirected back with access.</div>
-    </div>
+      <h1>Work Hard, Work Smart</h1>
+      <p>Choose which template you want, pay once, and after checkout you'll be redirected back with instant access.</p>
 
-    <!-- Inline access when ?paid=1 -->
+      <div class="product-row">
+        <div class="product">
+          <h2>Monthly Budget</h2>
+          <a class="btn" href="https://buy.stripe.com/9B6aEWbhRe3ue9ZeREbZe07" target="_blank" rel="noopener noreferrer">Get it</a>
+        </div>
+        <div class="product">
+          <h2>Basic Trading</h2>
+          <a class="btn" href="https://buy.stripe.com/STRIPE_LINK_FOR_TRADES?success_url=https://yourusername.github.io/yourrepo/index.html?paid=1&doc=trades" target="_blank" rel="noopener noreferrer">Get it</a>
+        </div>
+        <div class="product">
+          <h2>Market Psychology</h2>
+          <a class="btn" href="https://buy.stripe.com/STRIPE_LINK_FOR_PLAN?success_url=https://yourusername.github.io/yourrepo/index.html?paid=1&doc=plan" target="_blank" rel="noopener noreferrer">Get it</a>
+        </div>
+      </div>
+
+    <!-- After Payment Section -->
     <div id="after-pay" class="hidden">
-      <h1>You're all set!</h1>
-      <p>Thank you for the purchase. Click below to make your own copy of the template:</p>
-      <!-- Forced-copy link: prompts user to make their own copy -->
-      <a class="btn" id="copy-link" href="https://docs.google.com/spreadsheets/d/1vDnKBO99-P1hvX7u_JXiNySWgIyCnBIs22qH852R0Sc/copy" target="_blank" rel="noopener">Open &amp; Copy Template</a>
-      <div class="small">If the link doesn't open, try in a new tab or disable extensions that block redirects.</div>
+      <h1 id="success-title">You're all set!</h1>
+      <p id="success-desc">Thank you for your purchase. Click below to make your own copy of your template:</p>
+      <a class="btn" id="copy-link" href="#" target="_blank" rel="noopener">Open &amp; Copy Template</a>
+      <div class="small">If the link doesn’t work, try opening in a new tab or disable extensions that block redirects.</div>
       <div class="link-box">
         <p>Or copy this URL:</p>
-        <code>https://docs.google.com/spreadsheets/d/1vDnKBO99-P1hvX7u_JXiNySWgIyCnBIs22qH852R0Sc/copy</code>
+        <code id="raw-link"></code>
       </div>
     </div>
 
-    <!-- Error / fallback -->
+    <!-- Error Message -->
     <div id="error" class="hidden">
       <h1>Something’s off</h1>
-      <p>We couldn't detect a valid payment signal. If you already paid, refresh. Otherwise, complete the purchase below:</p>
-      <a class="btn" href="https://buy.stripe.com/9B6aEWbhRe3ue9ZeREbZe07">Pay $15</a>
+      <p id="error-msg">We couldn't detect a valid purchase parameter. If you already paid, refresh. Otherwise pick a template above to buy.</p>
     </div>
 
-    <div id="message" style="margin-top:1rem;"></div>
+    <!-- Patreon CTA -->
+    <hr />
+    <div style="text-align: center;">
+      <p style="margin-bottom: 0.5rem;">Like this project?</p>
+      <a class="btn" href="https://www.patreon.com/14598635/join" target="_blank" rel="noopener noreferrer">🧡 Support on Patreon</a>
+      <p class="small">Help me create more tools like this 🙏</p>
+    </div>
   </div>
 
   <script>
     const params = new URLSearchParams(window.location.search);
     const paid = params.get('paid');
+    const doc = params.get('doc');
     const before = document.getElementById('before-pay');
     const after = document.getElementById('after-pay');
     const error = document.getElementById('error');
 
-    if (paid === '1') {
+    const templateLinks = {
+      budget: 'https://docs.google.com/spreadsheets/d/1vDnKBO99-P1hvX7u_JXiNySWgIyCnBIs22qH852R0Sc/copy',
+      trades: 'https://docs.google.com/spreadsheets/d/SHEET_ID_TRADES/copy',
+      plan: 'https://docs.google.com/spreadsheets/d/SHEET_ID_PLAN/copy'
+    };
+
+    if (paid === '1' && doc && templateLinks[doc]) {
       before.classList.add('hidden');
+      error.classList.add('hidden');
+
+      const copyLinkEl = document.getElementById('copy-link');
+      const rawLinkEl = document.getElementById('raw-link');
+      const titleEl = document.getElementById('success-title');
+      const descEl = document.getElementById('success-desc');
+
+      const url = templateLinks[doc];
+      copyLinkEl.href = url;
+      rawLinkEl.textContent = url;
+      titleEl.textContent = `You're all set with "${doc}"!`;
+      descEl.textContent = `Thank you for purchasing the ${doc} template. Click below to make your own copy:`;
+
       after.classList.remove('hidden');
+    } else if (paid === '1') {
+      before.classList.add('hidden');
+      after.classList.add('hidden');
+      document.getElementById('error-msg').textContent = 'Template identifier is missing or invalid.';
+      error.classList.remove('hidden');
     } else if (paid !== null) {
       before.classList.add('hidden');
+      after.classList.add('hidden');
       error.classList.remove('hidden');
     }
   </script>
 </body>
 </html>
-
-
